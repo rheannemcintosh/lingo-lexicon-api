@@ -158,6 +158,25 @@ No commit — this file is excluded by `.gitignore`.
 
 ---
 
+### 7. Fix runtime compatibility issues
+Several issues were encountered when running `func start` for the first time:
+
+- `func init` with Core Tools v4 scaffolded a v4 programming model (`src/functions/`) but `func new` generated a v3-style function (`GetConcepts/index.js` + `function.json`). These are incompatible — the v3 folder was removed and the handler was rewritten as `src/functions/getConcepts.js` using the v4 `app.http()` style.
+- The extension bundle in `host.json` was set to `[1.*, 2.0.0)`, which was too old. Upgraded to `[4.*, 5.0.0)`.
+- `@azure/functions` v4 package was installed and `package.json` `main` updated to `src/functions/*.js`.
+
+**Commit message:**
+```
+Fix Azure Functions v4 runtime compatibility issues
+
+Rewrites GetConcepts using the v4 programming model, upgrades the
+extension bundle to v4, and installs the @azure/functions package.
+
+[LLA-3]
+```
+
+---
+
 ## Verification
 - `func start` runs without errors
 - `GET http://localhost:7071/api/concepts` returns a JSON array

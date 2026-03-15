@@ -2,9 +2,10 @@
   "name": "lingo-lexicon-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/functions/*.js",
   "dependencies": {
     "@azure/data-tables": "^13.3.2",
+    "@azure/functions": "^4.11.2",
     "agent-base": "^7.1.4",
     "data-uri-to-buffer": "^4.0.1",
     "debug": "^4.4.3",
