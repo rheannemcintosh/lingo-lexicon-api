@@ -18,7 +18,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - uses: azure/functions-action@v1
+      - uses: azure/login@v2
         with:
-          app-name: lingo-lexicon-api
-          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Azure Functions
+        run: |
+          zip -r deploy.zip . \
+            --exclude "*.git*" \
+            --exclude "local.settings.json" \
+            --exclude ".claude/*" \
+            --exclude ".vscode/*"
+          az functionapp deploy \
+            --resource-group rg-lingo-lexicon-api \
+            --name lingo-lexicon-api \
+            --src-path deploy.zip \
+            --type zip
