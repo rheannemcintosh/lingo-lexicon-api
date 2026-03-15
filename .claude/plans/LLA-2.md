@@ -24,38 +24,18 @@ using the Azure Functions Core Tools CLI.
 
 ---
 
-### 2. Scaffold Azure Functions project
+### 2. Scaffold Azure Functions project and update `.gitignore`
 ```
 func init . --worker-runtime node --language javascript
 ```
-Generates the Azure Functions project structure in the repo root, including `host.json` and `local.settings.json`.
+Generates the Azure Functions project structure in the repo root, including `host.json` and `local.settings.json`. Add `local.settings.json` and `.vscode/` to `.gitignore` immediately to prevent sensitive connection strings and editor config from being committed.
 
 **Commit message:**
 ```
-Scaffold Azure Functions project
+Scaffold Azure Functions project and update .gitignore
 
 Initialises the Azure Functions project structure with Node.js worker
-runtime using func init.
-
-[LLA-2]
-```
-
----
-
-### 3. Add `local.settings.json` to `.gitignore`
-`local.settings.json` contains sensitive connection strings and must not be committed.
-
-Add to `.gitignore`:
-```
-local.settings.json
-```
-
-**Commit message:**
-```
-Add local.settings.json to .gitignore
-
-Prevents sensitive Azure connection strings stored in local.settings.json
-from being committed to version control.
+runtime and excludes local.settings.json and .vscode/ from version control.
 
 [LLA-2]
 ```
