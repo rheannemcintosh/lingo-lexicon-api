@@ -37,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/rheannemcintosh/lingo-lexicon-api/issues"
   },
-  "homepage": "https://github.com/rheannemcintosh/lingo-lexicon-api#readme"
+  "homepage": "https://github.com/rheannemcintosh/lingo-lexicon-api#readme",
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
 }
